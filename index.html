@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-TurN Clan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #29293d;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .section {
+            width: 80%;
+            margin-bottom: 20px;
+            background-color: #2e2e44;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .chat {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #3e3e5e;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #1e1e2f;
+        }
+
+        .chat p {
+            margin: 5px 0;
+        }
+
+        .chat-input {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #5c5ce8;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #7a7af5;
+        }
+
+        .members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .member {
+            flex: 1 0 21%;
+            background-color: #3e3e5e;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .role {
+            font-size: 0.9rem;
+            color: #cfcfef;
+        }
+
+        footer {
+            background-color: #29293d;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to U-TurN Clan</h1>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Clan Chat</h2>
+            <div class="chat" id="chatBox">
+                <p><strong>Admin:</strong> Welcome to the U-TurN Clan chat!</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatMessage" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Members</h2>
+            <div class="members">
+                <div class="member">
+                    <h3>Player1</h3>
+                    <p class="role">Admin</p>
+                </div>
+                <div class="member">
+                    <h3>Player2</h3>
+                    <p class="role">Moderator</p>
+                </div>
+                <div class="member">
+                    <h3>Player3</h3>
+                    <p class="role">Member</p>
+                </div>
+                <div class="member">
+                    <h3>Player4</h3>
+                    <p class="role">Member</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 U-TurN Clan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            const chatBox = document.getElementById('chatBox');
+            const chatMessage = document.getElementById('chatMessage');
+            const message = chatMessage.value.trim();
+
+            if (message) {
+                const newMessage = document.createElement('p');
+                newMessage.innerHTML = `<strong>You:</strong> ${message}`;
+                chatBox.appendChild(newMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                chatMessage.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
