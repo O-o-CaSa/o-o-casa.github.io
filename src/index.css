@@ -1,0 +1,96 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 47.4% 11.2%; /* Dark blue-grey */
+    --foreground: 210 40% 98%; /* Light grey/white */
+
+    --card: 222.2 47.4% 15.2%; /* Slightly lighter dark blue-grey */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%; /* Vibrant blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%; /* Darker blue for secondary elements */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%; /* Muted grey */
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%; /* Dark red */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 22.5%; /* Slightly lighter border */
+    --input: 217.2 32.6% 22.5%;
+    --ring: 217.2 91.2% 59.8%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%; /* Discord Darker: #23272A */
+    --foreground: 210 20% 90%; /* Discord Text Muted: #B9BBBE */
+
+    --card: 222 47% 11%; /* Discord Dark Not Black: #36393F */
+    --card-foreground: 210 20% 90%;
+
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 90%;
+
+    --primary: 235 85.6% 64.7%; /* Discord Blurple: #5865F2 */
+    --primary-foreground: 210 20% 98%; /* White */
+
+    --secondary: 220 35% 20%; /* Discord Light: #40444B */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 35% 20%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 220 35% 20%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 72.2% 50.6%; /* Discord Red: #F04747 */
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 35% 15%; /* Darker border for dark mode */
+    --input: 220 35% 15%;
+    --ring: 235 85.6% 64.7%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.7);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+  
