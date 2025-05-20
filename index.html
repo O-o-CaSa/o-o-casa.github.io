@@ -6,8 +6,8 @@
   <title>UTurN Bots</title>
   <style>
     body {
-      background-color: #181a1b;
-      color: #f0f0f0;
+      background-color: #111317;
+      color: #e0e0e0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
@@ -17,7 +17,7 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       padding: 40px 20px;
       text-align: center;
     }
@@ -37,7 +37,7 @@
 
     p.subtitle {
       font-size: 18px;
-      color: #bbbbbb;
+      color: #aaaaaa;
       margin-bottom: 30px;
     }
 
@@ -60,7 +60,7 @@
     }
 
     .button.alt {
-      background-color: #4a4aff;
+      background-color: #5865f2;
     }
 
     .button:hover {
@@ -68,20 +68,29 @@
     }
 
     .commands-box {
-      background-color: #23242d;
-      padding: 25px;
+      background-color: #1c1e23;
+      padding: 30px;
       border-radius: 12px;
       text-align: left;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.8;
       white-space: pre-wrap;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: #4da6ff;
+      margin: 20px 0 10px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 20px;
       font-size: 14px;
-      color: #999999;
+      color: #888888;
     }
 
     .footer strong {
@@ -94,8 +103,8 @@
   <div class="container">
     <img src="c44c86d0-e090-451a-8e0a-5e8436e4e469.png" alt="Bot Logo" class="logo"/>
 
-    <h1>UTurN-app Bot</h1>
-    <p class="subtitle">Easy Discord Application Management</p>
+    <h1>UTurN || Bots</h1>
+    <p class="subtitle">Manage applications & monitor server status with ease.</p>
 
     <div class="buttons">
       <a class="button" href="https://discord.com/oauth2/authorize?client_id=1374300347828535297" target="_blank">Invite UTurN-app</a>
@@ -104,20 +113,19 @@
     </div>
 
     <div class="commands-box">
-🔧 <strong>Admin Commands</strong><br>
-!setapp &lt;app name&gt; – Create a new application<br>
-!setquestions &lt;app name&gt; &lt;question1&gt; | &lt;question2&gt; | ... – Set questions for an application<br>
-!setlogchannel – Set current channel to receive application submissions<br>
-!setappchannel – Set current channel as the applications menu channel<br>
-!setrole &lt;app name&gt; &lt;role&gt; – Set role to give when application is accepted<br>
-!listapps – List all available applications<br>
-!deleteapp &lt;app name&gt; – Delete an application<br><br>
+      <div class="section-title">🛠 UTurN-app — Application Bot</div>
+      <strong>!setapp &lt;name&gt;</strong> — Create a new application form.<br>
+      <strong>!setquestions &lt;name&gt; &lt;q1&gt; | &lt;q2&gt; | ...</strong> — Set the questions users will answer.<br>
+      <strong>!setlogchannel</strong> — Set the current channel to receive submitted applications.<br>
+      <strong>!setappchannel</strong> — Set the current channel where users can see the applications menu.<br>
+      <strong>!setrole &lt;app&gt; &lt;role&gt;</strong> — Assign a role to users when their application is accepted.<br>
+      <strong>!listapps</strong> — Show all created applications.<br>
+      <strong>!deleteapp &lt;name&gt;</strong> — Delete a specific application.<br>
+      <strong>!setmodrole &lt;role1&gt; | &lt;role2&gt;</strong> — Set which roles can review and manage applications.<br><br>
 
-👑 <strong>Owner Commands</strong><br>
-!setmodrole &lt;role1&gt; | &lt;role2&gt; | ... – Set roles that can review applications<br><br>
-
-📝 <strong>Member Commands</strong><br>
-Use the dropdown menu in the applications channel to submit an application
+      <div class="section-title">📡 UTurN-Status — Server Status Bot</div>
+      <strong>/ss</strong> — Instantly show the current server status in the channel where the command is used.<br>
+      <strong>/sst</strong> — Pin a permanent, auto-updating status message in a selected channel.
     </div>
 
     <div class="footer">
