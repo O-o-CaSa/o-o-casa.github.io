@@ -1,14 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="generator" content="Hostinger Horizons" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hostinger Horizons</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UTurN-app Bot</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 140px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #58a6ff;
+    }
+
+    p.subtitle {
+      font-size: 18px;
+      color: #cccccc;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      margin-bottom: 40px;
+    }
+
+    .button {
+      background-color: #2ea043;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #238636;
+    }
+
+    .commands-box {
+      background-color: #2c2f4a;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 15px;
+      color: #aaaaaa;
+    }
+
+    .footer strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="c44c86d0-e090-451a-8e0a-5e8436e4e469.png" alt="Bot Logo" class="logo"/>
+
+    <h1>UTurN-app Bot</h1>
+    <p class="subtitle">Easy Discord Application Management</p>
+
+    <div class="buttons">
+      <a class="button" href="https://discord.com/oauth2/authorize?client_id=1374398132703461386" target="_blank">Invite the Bot</a>
+      <a class="button" href="YOUR_DISCORD_SERVER_LINK_HERE" target="_blank">Join Support Server</a>
+    </div>
+
+    <div class="commands-box">
+🔧 <strong>Admin Commands</strong><br>
+!setapp &lt;app name&gt; – Create a new application<br>
+!setquestions &lt;app name&gt; &lt;question1&gt; | &lt;question2&gt; | ... – Set questions for an application<br>
+!setlogchannel – Set current channel to receive application submissions<br>
+!setappchannel – Set current channel as the applications menu channel<br>
+!setrole &lt;app name&gt; &lt;role&gt; – Set role to give when application is accepted<br>
+!listapps – List all available applications<br>
+!deleteapp &lt;app name&gt; – Delete an application<br><br>
+
+👑 <strong>Owner Commands</strong><br>
+!setmodrole &lt;role1&gt; | &lt;role2&gt; | ... – Set roles that can review applications<br><br>
+
+📝 <strong>Member Commands</strong><br>
+Use the dropdown menu in the applications channel to submit an application
+    </div>
+
+    <div class="footer">
+      Made By <strong>CaSa</strong> — Discord: <strong>.c.a.s.a.</strong>
+    </div>
+  </div>
+
+</body>
 </html>
