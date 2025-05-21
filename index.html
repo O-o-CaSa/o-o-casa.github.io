@@ -116,18 +116,32 @@
 
     <div class="commands-box">
       <div class="section-title">🛠 UTurN-app — Application Bot</div>
-      <strong>!setapp &lt;name&gt;</strong> — Create a new application form.<br>
-      <strong>!setquestions &lt;name&gt; &lt;q1&gt; | &lt;q2&gt; | ...</strong> — Set the questions users will answer.<br>
-      <strong>!setlogchannel</strong> — Set the current channel to receive submitted applications.<br>
-      <strong>!setappchannel</strong> — Set the current channel where users can see the applications menu.<br>
-      <strong>!setrole &lt;app&gt; &lt;role&gt;</strong> — Assign a role to users when their application is accepted.<br>
-      <strong>!listapps</strong> — Show all created applications.<br>
-      <strong>!deleteapp &lt;name&gt;</strong> — Delete a specific application.<br>
-      <strong>!setmodrole &lt;role1&gt; | &lt;role2&gt;</strong> — Set which roles can review and manage applications.<br><br>
+      <strong>🛠️ Admin Commands</strong><br>
+      <strong>/setapp &lt;name&gt;</strong> - Create a new application<br>
+      <strong>/setquestions &lt;name&gt; &lt;questions&gt;</strong> - Set questions<br>
+      <strong>/setlogchannel</strong> - Set log channel<br>
+      <strong>/setappchannel</strong> - Set application channel<br>
+      <strong>/setrole &lt;name&gt; &lt;role&gt;</strong> - Set approval role<br>
+      <strong>/listapps</strong> - List applications<br>
+      <strong>/deleteapp &lt;name&gt;</strong> - Delete an application<br><br>
+
+      <strong>👑 Owner Commands</strong><br>
+      <strong>/setmodrole &lt;roles&gt;</strong> - Set moderator roles<br><br>
+
+      <strong>📝 Member Commands</strong><br>
+      Use the dropdown menu in the application channel<br><br>
 
       <div class="section-title">📡 UTurN-Status — Server Status Bot</div>
-      <strong>/ss</strong> — Instantly show the current server status in the channel where the command is used.<br>
-      <strong>/sst</strong> — Pin a permanent, auto-updating status message in a selected channel.
+      <strong>/ss [address]</strong><br>
+      Display server status. Add IP:port to check a specific server.<br>
+      <strong>/sst address</strong><br>
+      Set up live server monitoring in this channel.<br>
+      <strong>/sp [address]</strong><br>
+      Show players currently on the server.<br>
+      <strong>/sn name [address]</strong><br>
+      Set a custom server name for display.<br>
+      <strong>/sshelp</strong><br>
+      Show this help message.
     </div>
 
     <div class="footer">
