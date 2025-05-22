@@ -1,153 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UTurN Bots</title>
-  <style>
-    body {
-      background-color: #111317;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTurN Bots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      max-width: 1000px;
-      padding: 40px 20px;
-      text-align: center;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: white;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
 
-    .logo {
-      width: 130px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    h1 {
-      font-size: 36px;
-      color: #4da6ff;
-      margin-bottom: 10px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
 
-    p.subtitle {
-      font-size: 18px;
-      color: #aaaaaa;
-      margin-bottom: 30px;
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    .buttons {
-      margin-bottom: 40px;
-    }
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
 
-    .button {
-      background-color: #2ea043;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      margin: 10px;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    }
+        .ai-notice {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-    .button.alt {
-      background-color: #5865f2;
-    }
+        .bots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-    .button:hover {
-      opacity: 0.9;
-    }
+        .bot-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .commands-box {
-      background-color: #1c1e23;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: left;
-      font-size: 15px;
-      line-height: 1.8;
-      white-space: pre-wrap;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      margin-bottom: 40px;
-    }
+        .bot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
 
-    .section-title {
-      font-size: 22px;
-      color: #4da6ff;
-      margin: 20px 0 10px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 5px;
-    }
+        .bot-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+        }
 
-    .footer {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #888888;
-    }
+        .bot-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
 
-    .footer strong {
-      color: #ffffff;
-    }
-  </style>
+        .commands-section {
+            margin: 20px 0;
+        }
+
+        .commands-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffeb3b;
+        }
+
+        .command {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border-left: 3px solid #00bcd4;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .command-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 6px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-download {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .btn-invite {
+            background: linear-gradient(45deg, #5865F2, #4752C4);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .support-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .support-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .creator-info {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .discord-tag {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .bots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>🤖 UTurN || Bots</h1>
+            <p class="subtitle">Powerful Discord bots to enhance your server experience</p>
+            
+            <div class="ai-notice">
+                <strong>⚡ AI-Powered Bots</strong><br>
+                These bots have been created using AI technology.
+            </div>
+        </header>
 
-  <div class="container">
-    <img src="c44c86d0-e090-451a-8e0a-5e8436e4e469.png" alt="Bot Logo" class="logo"/>
+        <div class="bots-grid">
+            <!-- Applications Bot -->
+            <div class="bot-card">
+                <div class="bot-title">
+                    <span class="bot-icon">📋</span>
+                    UTurN-app - Application Bot
+                </div>
+                
+                <div class="commands-section">
+                    <div class="commands-title">🔧 Admin Commands</div>
+                    <div class="command">
+                        /setapp &lt;name&gt;
+                        <div class="command-desc">Create a new application</div>
+                    </div>
+                    <div class="command">
+                        /setquestions &lt;questions&gt;
+                        <div class="command-desc">Set questions</div>
+                    </div>
+                    <div class="command">
+                        /setlogchannel
+                        <div class="command-desc">Set log channel</div>
+                    </div>
+                    <div class="command">
+                        /setappchannel
+                        <div class="command-desc">Set application channel</div>
+                    </div>
+                    <div class="command">
+                        /setrole &lt;role&gt;
+                        <div class="command-desc">Set approval role</div>
+                    </div>
+                    <div class="command">
+                        /listapps
+                        <div class="command-desc">List applications</div>
+                    </div>
+                    <div class="command">
+                        /deleteapp &lt;name&gt;
+                        <div class="command-desc">Delete an application</div>
+                    </div>
 
-    <h1>UTurN || Bots</h1>
-    <h3>Has been made using AI</h3>
-    <h5>For any suggestions please contact me discord: .c.a.s.a.</h5>
-    <p class="subtitle">Manage applications & monitor server status with ease.</p>
+                    <div class="commands-title">👑 Owner Commands</div>
+                    <div class="command">
+                        /setmodrole &lt;roles&gt;
+                        <div class="command-desc">Set moderator roles</div>
+                    </div>
 
-    <div class="buttons">
-      <a class="button" href="https://discord.com/oauth2/authorize?client_id=1374300347828535297" target="_blank">Invite UTurN-app</a>
-      <a class="button alt" href="https://discord.com/oauth2/authorize?client_id=1374398132703461386" target="_blank">Invite UTurN-Status</a>
-      <a class="button" href="sorry_i_Didn't_make_the_server_yet_:(" target="_blank">Join Support Server</a>
+                    <div class="commands-title">👥 Member Commands</div>
+                    <div class="command">
+                        Use the dropdown menu in the application channel
+                        <div class="command-desc">Easy Application Management</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1374300347828535297" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                </div>
+            </div>
+
+            <!-- Status Bot -->
+            <div class="bot-card">
+                <div class="bot-title">
+                    <span class="bot-icon">📊</span>
+                    UTurN-status - Game Server Monitor
+                </div>
+                
+                <div class="commands-section">
+                    <div class="commands-title">🎮 Available Commands</div>
+                    <div class="command">
+                        /ss [address]
+                        <div class="command-desc">Display server status. Add IP:port to check a specific server</div>
+                    </div>
+                    <div class="command">
+                        /set address
+                        <div class="command-desc">Set up live server monitoring in this channel</div>
+                    </div>
+                    <div class="command">
+                        /sp [address]
+                        <div class="command-desc">Show players currently on the server</div>
+                    </div>
+                    <div class="command">
+                        /sn name [address]
+                        <div class="command-desc">Set a custom server name for display</div>
+                    </div>
+                    <div class="command">
+                        /sshelp
+                        <div class="command-desc">Show this help message</div>
+                    </div>
+                </div>
+
+                <p style="margin: 15px 0; font-style: italic; color: #ffeb3b;">
+                    🎯 Game Server Monitor for Call of Duty 1 (2003)
+                </p>
+
+                <div class="button-group">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1374398132703461386" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h2>🆘 Need Help?</h2>
+            <p>Join our support server for assistance, updates, and community support!</p>
+            <a href="#" class="btn support-btn">💬 Join Support Server</a>
+        </div>
+
+        <footer>
+            <div class="creator-info">
+                <strong>Made By CaSa</strong>
+				<h5>Discord</h5>
+				<h5>is</h5>
+
+            </div>
+            <div class="discord-tag">.c.a.s.a.</div>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                Enhancing Discord servers with AI-powered automation
+            </p>
+        </footer>
     </div>
-
-    <div class="commands-box">
-      <div class="section-title">🛠 UTurN-app — Application Bot</div>
-      <strong>🛠️ Admin Commands</strong><br>
-      <strong>/setapp &lt;name&gt;</strong> - Create a new application<br>
-      <strong>/setquestions &lt;name&gt; &lt;questions&gt;</strong> - Set questions<br>
-      <strong>/setlogchannel</strong> - Set log channel<br>
-      <strong>/setappchannel</strong> - Set application channel<br>
-      <strong>/setrole &lt;name&gt; &lt;role&gt;</strong> - Set approval role<br>
-      <strong>/listapps</strong> - List applications<br>
-      <strong>/deleteapp &lt;name&gt;</strong> - Delete an application<br><br>
-
-      <strong>👑 Owner Commands</strong><br>
-      <strong>/setmodrole &lt;roles&gt;</strong> - Set roles that can accept/refuse applications <br><br>
-
-      <strong>📝 Member Commands</strong><br>
-      Use the dropdown menu in the application channel<br><br>
-
-      <div class="section-title">📡 UTurN-Status — Server Status Bot</div>
-      <strong>/ss [address]</strong><br>
-      Display server status. Add IP:port to check a specific server.<br>
-      <strong>/sst address</strong><br>
-      Set up live server monitoring in this channel.<br>
-      <strong>/sp [address]</strong><br>
-      Show players currently on the server.<br>
-      <strong>/sn name [address]</strong><br>
-      Set a custom server name for display.<br>
-      <strong>/sshelp</strong><br>
-      Show this help message.
-    </div>
-
-    <div class="footer">
-      Made By <strong>CaSa</strong> — Discord: <strong>.c.a.s.a.</strong>
-    </div>
-  </div>
-
 </body>
 </html>
