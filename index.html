@@ -59,7 +59,7 @@
 
         .bots-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -71,6 +71,7 @@
             padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
         .bot-card:hover {
@@ -78,12 +79,19 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
+        .bot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
         .bot-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
             color: #ffd700;
             display: flex;
             align-items: center;
+            flex: 1;
         }
 
         .bot-icon {
@@ -91,36 +99,11 @@
             font-size: 1.5rem;
         }
 
-        .commands-section {
-            margin: 20px 0;
-        }
-
-        .commands-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #ffeb3b;
-        }
-
-        .command {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px 16px;
-            margin: 8px 0;
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            border-left: 3px solid #00bcd4;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        .command-desc {
-            font-size: 0.9rem;
+        .bot-description {
+            font-size: 0.95rem;
             opacity: 0.85;
-            margin-top: 6px;
-            font-weight: 400;
-            line-height: 1.4;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .button-group {
@@ -145,9 +128,11 @@
             text-align: center;
         }
 
-        .btn-download {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
+        .btn-info {
+            background: linear-gradient(45deg, #17a2b8, #138496);
             color: white;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
 
         .btn-invite {
@@ -158,6 +143,95 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 2% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+        }
+
+        .commands-section {
+            margin: 20px 0;
+        }
+
+        .commands-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffeb3b;
+            border-bottom: 2px solid #ffeb3b;
+            padding-bottom: 5px;
+        }
+
+        .command {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border-left: 3px solid #00bcd4;
+        }
+
+        .command-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 6px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .feature-highlight {
+            background: rgba(255, 235, 59, 0.1);
+            border: 1px solid rgba(255, 235, 59, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
         }
 
         .support-section {
@@ -210,6 +284,17 @@
             .btn {
                 justify-content: center;
             }
+
+            .bot-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -228,7 +313,62 @@
         <div class="bots-grid">
             <!-- Applications Bot -->
             <div class="bot-card">
-                <div class="bot-title">
+                <div class="bot-header">
+                    <div class="bot-title">
+                        <span class="bot-icon">📋</span>
+                        UTurN-app
+                    </div>
+                    <button class="btn btn-info" onclick="openModal('app-modal')">ℹ️ Info</button>
+                </div>
+                <div class="bot-description">
+                    Advanced application system for Discord servers with custom forms, automatic logging, and role management.
+                </div>
+                <div class="button-group">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1374300347828535297" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                </div>
+            </div>
+
+            <!-- Status Bot -->
+            <div class="bot-card">
+                <div class="bot-header">
+                    <div class="bot-title">
+                        <span class="bot-icon">📊</span>
+                        UTurN-status
+                    </div>
+                    <button class="btn btn-info" onclick="openModal('status-modal')">ℹ️ Info</button>
+                </div>
+                <div class="bot-description">
+                    Real-time game server monitoring for Call of Duty 1 (2003) with live status updates and player tracking.
+                </div>
+                <div class="button-group">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1374398132703461386" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                </div>
+            </div>
+
+            <!-- Ticket Bot -->
+            <div class="bot-card">
+                <div class="bot-header">
+                    <div class="bot-title">
+                        <span class="bot-icon">🎫</span>
+                        UTurN-ticket
+                    </div>
+                    <button class="btn btn-info" onclick="openModal('ticket-modal')">ℹ️ Info</button>
+                </div>
+                <div class="bot-description">
+                    Professional ticket system with auto-close timers, role management, and comprehensive logging for support servers.
+                </div>
+                <div class="button-group">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1375193990638600347" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <!-- App Bot Modal -->
+        <div id="app-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('app-modal')">&times;</span>
+                <div class="modal-title">
                     <span class="bot-icon">📋</span>
                     UTurN-app - Application Bot
                 </div>
@@ -237,54 +377,57 @@
                     <div class="commands-title">🔧 Admin Commands</div>
                     <div class="command">
                         /setapp &lt;name&gt;
-                        <div class="command-desc">Create a new application</div>
+                        <div class="command-desc">Create a new application form</div>
                     </div>
                     <div class="command">
                         /setquestions &lt;questions&gt;
-                        <div class="command-desc">Set questions</div>
+                        <div class="command-desc">Set custom questions for the application</div>
                     </div>
                     <div class="command">
                         /setlogchannel
-                        <div class="command-desc">Set log channel</div>
+                        <div class="command-desc">Set channel for application logs</div>
                     </div>
                     <div class="command">
                         /setappchannel
-                        <div class="command-desc">Set application channel</div>
+                        <div class="command-desc">Set channel where applications are submitted</div>
                     </div>
                     <div class="command">
                         /setrole &lt;role&gt;
-                        <div class="command-desc">Set approval role</div>
+                        <div class="command-desc">Set role given upon approval</div>
                     </div>
                     <div class="command">
                         /listapps
-                        <div class="command-desc">List applications</div>
+                        <div class="command-desc">View all created applications</div>
                     </div>
                     <div class="command">
                         /deleteapp &lt;name&gt;
-                        <div class="command-desc">Delete an application</div>
+                        <div class="command-desc">Remove an application form</div>
                     </div>
 
                     <div class="commands-title">👑 Owner Commands</div>
                     <div class="command">
                         /setmodrole &lt;roles&gt;
-                        <div class="command-desc">Set moderator roles</div>
+                        <div class="command-desc">Set moderator roles that can manage applications</div>
                     </div>
 
                     <div class="commands-title">👥 Member Commands</div>
                     <div class="command">
-                        Use the dropdown menu in the application channel
-                        <div class="command-desc">Easy Application Management</div>
+                        Dropdown Menu System
+                        <div class="command-desc">Members use the dropdown menu in the application channel to submit applications</div>
                     </div>
                 </div>
 
-                <div class="button-group">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1374300347828535297" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+                <div class="feature-highlight">
+                    ✨ Features: Custom application forms, automatic role assignment, comprehensive logging, and easy-to-use dropdown interface
                 </div>
             </div>
+        </div>
 
-            <!-- Status Bot -->
-            <div class="bot-card">
-                <div class="bot-title">
+        <!-- Status Bot Modal -->
+        <div id="status-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('status-modal')">&times;</span>
+                <div class="modal-title">
                     <span class="bot-icon">📊</span>
                     UTurN-status - Game Server Monitor
                 </div>
@@ -309,16 +452,69 @@
                     </div>
                     <div class="command">
                         /sshelp
-                        <div class="command-desc">Show this help message</div>
+                        <div class="command-desc">Show help message with all commands</div>
                     </div>
                 </div>
 
-                <p style="margin: 15px 0; font-style: italic; color: #ffeb3b;">
-                    🎯 Game Server Monitor for Call of Duty 1 (2003)
-                </p>
+                <div class="feature-highlight">
+                    🎯 Specialized for Call of Duty 1 (2003) servers with real-time monitoring, player tracking, and custom server names
+                </div>
+            </div>
+        </div>
 
-                <div class="button-group">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1374398132703461386" class="btn btn-invite" target="_blank">🔗 Invite to Server</a>
+        <!-- Ticket Bot Modal -->
+        <div id="ticket-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('ticket-modal')">&times;</span>
+                <div class="modal-title">
+                    <span class="bot-icon">🎫</span>
+                    UTurN-ticket - Ticket System
+                </div>
+                
+                <div class="commands-section">
+                    <div class="commands-title">🔧 Admin Commands</div>
+                    <div class="command">
+                        /setmenu
+                        <div class="command-desc">Create ticket dropdown menu in current channel with "Open Ticket" button</div>
+                    </div>
+                    <div class="command">
+                        /settime &lt;time&gt;
+                        <div class="command-desc">Set auto-close timer (e.g., 10h, 30m, 1h30m)</div>
+                    </div>
+                    <div class="command">
+                        /setlogchannel
+                        <div class="command-desc">Set channel for ticket logs and transcripts</div>
+                    </div>
+                    <div class="command">
+                        /setroletic &lt;role1 | role2&gt;
+                        <div class="command-desc">Set roles that can view and respond to tickets</div>
+                    </div>
+                    <div class="command">
+                        /closeticket [reason]
+                        <div class="command-desc">Manually close a ticket with optional reason</div>
+                    </div>
+                    <div class="command">
+                        /ticketstats
+                        <div class="command-desc">View server ticket statistics</div>
+                    </div>
+                    <div class="command">
+                        /blacklist &lt;user&gt;
+                        <div class="command-desc">Prevent user from creating tickets</div>
+                    </div>
+
+                    <div class="commands-title">👥 Member Commands</div>
+                    <div class="command">
+                        Dropdown Menu
+                        <div class="command-desc">Click "Open Ticket" to create a private support channel</div>
+                    </div>
+                    <div class="command">
+                        In Ticket: Close, Add User, Remove User buttons
+                        <div class="command-desc">Manage your ticket with easy-to-use buttons</div>
+                    </div>
+                </div>
+
+                <div class="feature-highlight">
+                    🚀 Features: Auto-close timers, role permissions, comprehensive logging, blacklist system, ticket statistics, and user-friendly interface
                 </div>
             </div>
         </div>
@@ -332,9 +528,8 @@
         <footer>
             <div class="creator-info">
                 <strong>Made By CaSa</strong>
-				<h5>Discord</h5>
-				<h5>is</h5>
-
+                <h5>Discord</h5>
+                <h5>is</h5>
             </div>
             <div class="discord-tag">.c.a.s.a.</div>
             <p style="margin-top: 15px; opacity: 0.8;">
@@ -342,5 +537,41 @@
             </p>
         </footer>
     </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
